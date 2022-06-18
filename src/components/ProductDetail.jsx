@@ -24,13 +24,13 @@ export const ProductDetail = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchProduct = async () => {
+    const fetchProduct = async (id) => {
       const response = await axios.get(
-        `https://fakestoreapi.com/products/${productId}`
+        `https://fakestoreapi.com/products/${id}`
       );
       dispatch(selectedProduct(response.data));
     };
-    if (productId && productId !== "") fetchProduct();
+    if (productId && productId !== "") fetchProduct(productId);
     return () => {
       dispatch(removeSelectedProduct());
     };
