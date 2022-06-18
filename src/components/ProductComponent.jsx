@@ -16,7 +16,7 @@ export const ProductComponent = () => {
               </div>
               <div className="content">
                 <div className="header">{title}</div>
-                <div className="meta price">₹ {price}</div>
+                <div className="meta price">$ {price}</div>
                 <div className="meta">{category}</div>
               </div>
             </div>
