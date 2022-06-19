@@ -1,11 +1,10 @@
-import axios from "axios";
 import "antd/dist/antd.css";
 import { Spin } from "antd";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  selectedProduct,
+ fetchProduct,
   removeSelectedProduct,
 } from "../redux/actions/productActions";
 
@@ -24,13 +23,8 @@ export const ProductDetail = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchProduct = async (id) => {
-      const response = await axios.get(
-        `https://fakestoreapi.com/products/${id}`
-      );
-      dispatch(selectedProduct(response.data));
-    };
-    if (productId && productId !== "") fetchProduct(productId);
+   
+    if (productId && productId !== "") dispatch(fetchProduct(productId));
     return () => {
       dispatch(removeSelectedProduct());
     };
